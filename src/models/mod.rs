@@ -1,18 +1,18 @@
 pub struct Expense {
 	name : String,
-	amount : f64,
+	amount : f32,
 }
 
 impl Expense {
-	pub fn new(name: String, amount: f64) -> Expense {
+	pub fn new(name: String, amount: f32) -> Expense {
 		Expense {
 			name: name,
 			amount: amount
 		}
 	}
-	pub fn get_amount(&self) -> f64 { self.amount}
+	pub fn get_amount(&self) -> f32 { self.amount}
 	pub fn get_name(&self) -> &String { &self.name }
-	pub fn set_amount(&mut self, amount: f64) { self.amount = amount }
+	pub fn set_amount(&mut self, amount: f32) { self.amount = amount }
 	pub fn set_name(&mut self, name: String) { self.name = name }
 }
 
@@ -23,21 +23,21 @@ impl Expense {
 
 pub struct Income {
 	name: String,
-	amount: f64,
+	amount: f32,
 }
 
 
 impl Income {
-	pub fn new(name: String, amount: f64) -> Income {
+	pub fn new(name: String, amount: f32) -> Income {
 		Income {
 			name: name,
 			amount: amount
 		}
 	}
-	pub fn get_amount(&self) -> f64 { self.amount }
+	pub fn get_amount(&self) -> f32 { self.amount }
 	pub fn get_name(&self) -> &String { &self.name }
-	pub fn set_amount(&mut self, amount: f64) -> { self.amount = amount }
-	pub fn set_name(&mut self, name: String) -> { self.name = name }
+	pub fn set_amount(&mut self, amount: f32) { self.amount = amount }
+	pub fn set_name(&mut self, name: String) { self.name = name }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -66,15 +66,15 @@ impl Member {
 	pub fn set_expenses(&mut self, expenses: Vec<Expense>) { self.expenses = expenses }
 	pub fn add_income(&mut self, income: Income) { self.income.push(income) }
 	pub fn add_expense(&mut self, expense: Expense) { self.expenses.push(expense) }
-	pub fn total_income (&self) -> i64 { 
-		let mut total = 0;
+	pub fn total_income (&self) -> f32 { 
+		let mut total = 0.0;
 		for income in &self.income {
 			total += income.get_amount();
 		}
 		total
 	}
-	pub fn total_expenses (&self) -> i64 {
-		let mut total = 0;
+	pub fn total_expenses (&self) -> f32 {
+		let mut total = 0.0;
 		for expense in &self.expenses {
 			total += expense.get_amount();
 		}
