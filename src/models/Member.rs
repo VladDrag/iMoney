@@ -23,18 +23,21 @@ impl Member {
 	pub fn set_expenses(&mut self, expenses: Vec<Expense>) { self.expenses = expenses }
 	pub fn add_income(&mut self, income: Income) { self.income.push(income) }
 	pub fn add_expense(&mut self, expense: Expense) { self.expenses.push(expense) }
-	pub fn total_income (&self) -> f32 { 
+	pub fn total_monthly_income (&self) -> f32 { 
 		let mut total = 0.0;
 		for income in &self.income {
 			total += income.get_amount();
 		}
 		total
 	}
-	pub fn total_expenses (&self) -> f32 {
+	pub fn total_monthly_expenses (&self) -> f32 {
 		let mut total = 0.0;
 		for expense in &self.expenses {
 			total += expense.get_amount();
 		}
 		total
+	}
+	pub fn total_monthly_left(&self) -> f32 {
+		this.total_monthly_income() - this.total_monthly_expenses()
 	}
 }
