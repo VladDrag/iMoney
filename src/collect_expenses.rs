@@ -1,6 +1,6 @@
 use std::io;
-use crate::models::Member;
-use crate::models::Expense;
+use crate::models::Member::Member;
+use crate::models::Expense::Expense;
 
 pub fn get_expenses(mem: &mut Member) {
 	loop {
@@ -9,7 +9,7 @@ pub fn get_expenses(mem: &mut Member) {
 		let mut name = String::new();
 		io::stdin().read_line(&mut name).expect("Failed to read line");
 		if name.trim() == "q" {
-			break;
+			return ;
 		}
 		// input.set_name(name.trim().to_string());
 
