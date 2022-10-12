@@ -1,6 +1,7 @@
 use std::io;
 use crate::models::member::Member;
 use crate::models::income::Income;
+use colored::Colorize;
 
 pub fn get_income(mem: &mut Member) {
 	loop {

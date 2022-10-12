@@ -1,6 +1,7 @@
 use std::io;
 use crate::models::member::Member;
 use crate::models::expense::Expense;
+use colored::Colorize;
 
 pub fn get_expenses(mem: &mut Member) {
 	loop {
