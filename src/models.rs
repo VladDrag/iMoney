@@ -1,3 +1,3 @@
-pub mod Expense;
-pub mod Income;
-pub mod Member;
+pub mod expense;
+pub mod income;
+pub mod member;

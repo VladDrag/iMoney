@@ -1,5 +1,5 @@
-use crate::models::Income::Income;
-use crate::models::Expense::Expense;
+use crate::models::income::Income;
+use crate::models::expense::Expense;
 
 pub struct Member {
 	name: String,
@@ -38,6 +38,6 @@ impl Member {
 		total
 	}
 	pub fn total_monthly_left(&self) -> f32 {
-		this.total_monthly_income() - this.total_monthly_expenses()
+		self.total_monthly_income() - self.total_monthly_expenses()
 	}
 }

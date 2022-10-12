@@ -1,6 +1,6 @@
 use std::io;
-use crate::models::Member::Member;
-use crate::models::Income::Income;
+use crate::models::member::Member;
+use crate::models::income::Income;
 
 pub fn get_income(mem: &mut Member) {
 	loop {
@@ -9,6 +9,8 @@ pub fn get_income(mem: &mut Member) {
 		let mut name = String::new();
 		io::stdin().read_line(&mut name).expect("Failed to read line");
 		if name.trim() == "q" {
+			let input = Income::new(String::from("Last income line"), 0.0);
+			mem.add_income(input);
 			return ;
 		}
 
@@ -22,6 +24,6 @@ pub fn get_income(mem: &mut Member) {
 						amount.trim().parse::<f32>().unwrap()
 					);
 
-		mem.add_expense(input);
+		mem.add_income(input);
 	}
 }
