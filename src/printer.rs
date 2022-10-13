@@ -31,16 +31,31 @@ pub fn print_on_cli(member: &Member) {
         let expense_joining = [expense_name, expense.to_string().as_str()].join(" : ");
 
         if i < amounts.len() {
-            amounts[i] = [amounts[i].as_str(), expense_joining.as_str()].join("   |   ");
+            amounts[i] = [amounts[i].as_str(), expense_joining.as_str()].join("       ");
         } else {
             amounts.push(expense_joining);
         }
     }
 
-    println!("{}", Colorize::blue("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
+    println!("{}", Colorize::blue("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
 
     for i in 0..amounts.len() {
-        println!("{}", Colorize::green(amounts[i].as_str().trim()));
+        if amounts[i].chars().any(|c| c == '-') && !amounts[i].chars().any(|c| c == '+') {
+            println!(
+                "{}",
+                Colorize::bright_yellow(
+                    ["~~~~~~~~~~~~~~~~~", amounts[i].as_str()]
+                        .join("   ")
+                        .as_str()
+                )
+            );
+        } else {
+            println!("{}", Colorize::bright_yellow(amounts[i].as_str().trim()));
+        }
     }
-    println!("{}", Colorize::blue("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
+    println!("{}", Colorize::blue("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
+	println!("Total income     : {}", Colorize::bright_magenta(member.total_monthly_income().to_string().as_str()));
+	println!("Total expenses   : {}", Colorize::red(member.total_monthly_expenses().to_string().as_str()));
+	println!("Remaining balance: {}", Colorize::green(member.total_monthly_left().to_string().as_str()));
+
 }
