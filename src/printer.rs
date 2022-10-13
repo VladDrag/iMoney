@@ -2,6 +2,8 @@ use crate::models::member::Member;
 use colored::Colorize;
 
 pub fn print_on_cli(member: &Member) {
+	println!("{}", Colorize::blue("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
+
     println!(
         "Income and expenses for {}:",
         Colorize::blue(member.get_name().as_str()).trim()
@@ -37,7 +39,7 @@ pub fn print_on_cli(member: &Member) {
         }
     }
 
-    println!("{}", Colorize::blue("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
+    println!("{}", Colorize::blue("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
 
     for i in 0..amounts.len() {
         if amounts[i].chars().any(|c| c == '-') && !amounts[i].chars().any(|c| c == '+') {
@@ -53,7 +55,7 @@ pub fn print_on_cli(member: &Member) {
             println!("{}", Colorize::bright_yellow(amounts[i].as_str().trim()));
         }
     }
-    println!("{}", Colorize::blue("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
+    println!("{}", Colorize::blue("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
 	println!("Total income     : {}", Colorize::bright_magenta(member.total_monthly_income().to_string().as_str()));
 	println!("Total expenses   : {}", Colorize::red(member.total_monthly_expenses().to_string().as_str()));
 	println!("Remaining balance: {}", Colorize::green(member.total_monthly_left().to_string().as_str()));
